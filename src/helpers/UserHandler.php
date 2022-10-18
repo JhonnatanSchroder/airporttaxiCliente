@@ -36,7 +36,7 @@ class UserHandler {
 
         if($User) {
             if(password_verify($password, $User['password'])) {
-                $token = md5(time().rand(0,9999).time());
+                $token = md5(time().rand(0,9999));
 
                 User::update()->set('token', $token)->where('email', $email)->execute();
                 return $token;
