@@ -1,0 +1,41 @@
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: rgba(219, 226, 233, 0.352);
+}
+
+form {
+  background-color: white;
+  border-radius: 6px;
+}
+
+.navbar {
+  background-color: white;
+}
+
+.navbar-light .navbar-toggler {
+  box-shadow: none;
+}
+
+.navbar-toggler:hover {
+  background-color: rgb(237, 239, 245);
+}
+
+.nav-services {
+  background-color: #e7eef3;
+}
+
+.airports-home .container {
+  border-radius: 20px;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+
+.icone {
+  font-size: 6rem;
+}

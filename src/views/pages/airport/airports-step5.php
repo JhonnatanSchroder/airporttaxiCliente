@@ -1,0 +1,130 @@
+
+<body>
+<?=$render('header')?>
+
+<body>
+<div class="container">
+    <section class="airports-home">
+      <div class="container p-5 bg-white my-4">
+        <div class="row">
+          <div class="col">
+            <h2 class="fs-2 text-center mb-4">TÁXI DE / PARA AEROPORTO</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col ">
+            <h2
+              class=""
+            >
+              Etapa 5/5
+            </h2>
+            <p class="mb-5 ">
+              Por favor, verifique sua reserva de táxi de/para aeroporto;
+            </p>
+          </div>
+        </div>
+        <div class="row">
+        <div class="container bg-white">
+            <div class="row justify-content-center">
+                <div>
+                    <div>
+                        <h3>Informacões do Pedido</h3>
+                        <p class='d-inline-block'>CEP / CIDADE:</p>
+                        <p class='d-inline-block fw-bold'><?=$order->cep_start?></p>
+                    </div>
+
+                    <div >
+                        <p class="d-inline-block">Partida para o aeroporto:</p>
+                        <p class="d-inline-block fw-bold"><?=$order->date?></p>
+                    </div>
+
+                    <div >
+                        <p class="d-inline-block">Passageiros:</p>
+                       <p class="d-inline-block fw-bold"><?=$order->passengers?></p>
+                    </div>
+
+                    <div >
+                        <p class="d-inline-block">Cadeiras de crianca:</p>
+                       <p class="d-inline-block fw-bold"><?=$order->kids_seats?></p>
+                    </div>
+
+                    <div >
+                        <p class="d-inline-block">Assento elevatório:</p>
+                       <p class="d-inline-block fw-bold"><?=$order->booster_seats?></p>
+                    </div>
+
+                    <div >
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" placeholder="deixe uma observacao" style="height: 100px" name='obs'><?=$order->obs?>
+                        </textarea>
+                            <label for="floatingTextarea2">Observacao</label>
+                        </div>
+                    </div>
+
+                    <div >
+                        <h3>Informacões de Contato</h3>
+                        <p class="d-inline-block">Primeiro e último nome:</p>
+                       <p class="d-inline-block fw-bold"><?=$order->name_user?></p>
+                    </div>
+
+                   <div >
+                        <p class="d-inline-block">Email:</p>
+                       <p class="d-inline-block fw-bold"><?=$order->email?></p>
+                    </div>
+
+                    <div >
+                        <p class="d-inline-block">Telefone:</p>
+                       <p class="d-inline-block fw-bold"><?=$order->telefone?></p>
+                    </div>
+
+                    <div >
+                        <p class="d-inline-block">Rua:</p>
+                       <p class="d-inline-block fw-bold"><?=$order->street_name?></p>
+                    </div>
+
+                    <div >
+                        <p class="d-inline-block">CEP / CIDADE:</p>
+                       <p class="d-inline-block fw-bold"><?=$order->cep_end?></p>
+                    </div>
+                    <a href='<?=$base?>/thankpage' class="btn btn-primary mb-3 px-5">
+                    Continuar
+                    </a>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+    "use strict";
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll(".needs-validation");
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener(
+        "submit",
+        function (event) {
+            if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+            }
+
+            form.classList.add("was-validated");
+        },
+        false
+        );
+    });
+    })();
+</script>
+</body>
+</html>
