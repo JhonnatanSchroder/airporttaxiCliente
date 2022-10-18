@@ -77,3 +77,5 @@ $router->get('/bus/step3', "BusController@step3");
 $router->post('/bus/step3', "BusController@step3Action");
 
 $router->get('/bus/step4', "BusController@step4");
+
+$router->get('/logout', "AirportController@logout");

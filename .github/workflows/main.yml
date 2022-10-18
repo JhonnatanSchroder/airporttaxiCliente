@@ -18,3 +18,4 @@ jobs:
           username: airporttaxich
           password: jhongusta012
           server-dir: public_html/airporttaxi/
+          exclude: ../src/Config.php

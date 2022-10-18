@@ -52,5 +52,6 @@
       </div>
     </section>
   </div>
+  <?=$render('footer')?>
 </body>
 </html>

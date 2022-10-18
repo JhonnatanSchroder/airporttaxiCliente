@@ -73,7 +73,6 @@ class LoginController extends Controller {
                 $token = UserHandler::addUser($name, $email, $password, $birthdate);
                 $_SESSION['token'] = $token;
                 $this->redirect('/');
-                echo $birthdate;
             } else {
                 $_SESSION['flash'] = "Email já cadastrado!";
                 $this->redirect('/register');

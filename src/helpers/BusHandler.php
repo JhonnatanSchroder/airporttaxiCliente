@@ -38,7 +38,6 @@ class BusHandler {
         $sql->bindValue(':id_user', $id_user);
         $sql->execute();
 
-        echo 'passou, pela funcao';
     }
 
     public function getLastOrder($id_user) {

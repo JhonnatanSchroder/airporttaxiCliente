@@ -27,8 +27,7 @@ class LimousineHandler {
 
         $pdo = Database::getInstance();
         $sql = $pdo->prepare("INSERT INTO `limousine` (`id`,`date`, `street`, `cep_start`, `passengers`, `kids_seats`, `booster_seats`, `obs`, `how`,`name`, `email`, `phone`,`id_user`)
-         VALUES (NULL, :date, :street, :cep_start, :date,
-         :passengers, :kids_seats, :booster_seats, :obs, :how, :name, :email, :phone, :id_user);");
+         VALUES (NULL, :date, :street, :cep_start, :passengers, :kids_seats, :booster_seats, :obs, :how, :name, :email, :phone, :id_user);");
         $sql->bindValue(':date', $date);
         $sql->bindValue(':street', $street);
         $sql->bindValue(':cep_start', $cep_start);
@@ -46,13 +45,15 @@ class LimousineHandler {
 
     public function getLastOrder($id_user) {
         $pdo = Database::getInstance();
-        $sql = $pdo->query("SELECT * FROM `limousine` WHERE id_user = $id_user ORDER BY id DESC");
+        $sql = $pdo->prepare("SELECT * FROM `limousine` WHERE id_user = :id_user ORDER BY id DESC LIMIT 1");
+        $sql->bindValue(':id_user', $id_user);
+        $sql->execute();
+        $data = $sql->fetchAll(\PDO::FETCH_ASSOC);
 
-        if($sql->rowCount() != 0) {
-            $data = $sql->fetchAll(\PDO::FETCH_ASSOC);
+        if(count($data) != 0) {
             $LimousineOrder = new Limousine();
             $LimousineOrder->date = $data[0]['date'];
-            $LimousineOrder->street= $data[0]['street'];
+            $LimousineOrder->street = $data[0]['street'];
             $LimousineOrder->cep_start = $data[0]['cep_start'];
             $LimousineOrder->passengers = $data[0]['passengers'];
             $LimousineOrder->kids_seats = $data[0]['kids_seats'];

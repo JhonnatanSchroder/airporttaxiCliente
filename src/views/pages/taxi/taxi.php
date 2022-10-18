@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-5 mb-3">
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
                 <div class="card shadow justify-content-center p-1" style="">
                   <div class="card-body align-items-center">
                     <div class="card-img-top text-center">
@@ -46,7 +46,7 @@
                   </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-5 mb-3">
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
                 <div class="card shadow justify-content-center p-1" style="">
                   <div class="card-body align-items-center">
                     <div class="card-img-top text-center">
@@ -73,5 +73,7 @@
       </div>
     </section>
   </div>
+  <?=$render('footer')?>
+
 </body>
 </html>

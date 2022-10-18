@@ -1,5 +1,7 @@
 <?php
 namespace src\helpers;
+
+use \core\Database;
 use \src\models\User;
 use \src\models\UserRelations;
 use \src\helpers\PostHandler;
@@ -9,14 +11,18 @@ class UserHandler {
     public static function checkLogin() {
         if(!empty($_SESSION['token'])) {
             $token = $_SESSION['token'];
+            $pdo = Database::getInstance();
 
-            $data = User::select()->where('token', $token)->one();
+            $sql = $pdo->prepare("SELECT * FROM users WHERE token = :token");
+            $sql->bindValue(':token', $token);
+            $sql->execute();
+            $data = $sql->fetchAll(\PDO::FETCH_ASSOC);
             if($data !== "" || null) {
 
                 $loggedUser = new User();
-                $loggedUser->id = $data['id'];
-                $loggedUser->name = $data['name'];
-                $loggedUser->email = $data['email'];
+                $loggedUser->id = $data[0]['id'];
+                $loggedUser->name = $data[0]['name'];
+                $loggedUser->email = $data[0]['email'];
 
                 return $loggedUser;
             }
@@ -50,21 +56,23 @@ class UserHandler {
         return $User ? true : false;
     }
 
-    public function getUser($id, $full = false) {
-        $data = User::select()->where('id', $id)->one();
+    public function getUser($id) {
+        $pdo = Database::getInstance();
+        $sql = $pdo->prepare("SELECT * FROM users WHERE id = :id");
+        $sql->bindValue(':id', $id);
+        $sql->execute();
 
+        $data = $sql->fetchAll(\PDO::FETCH_ASSOC);
+        
         if($data) {
             $user = new User();
-            $user->id = $data['id'];
-            $user->name = $data['name'];
-            $user->email = $data['email'];
-
+            $user->id = $data[0]['id'];
+            $user->name = $data[0]['name'];
+            $user->email = $data[0]['email'];
 
             return $user;
         }
 
-
-        return false;
     }
 
     public function addUser($name, $email, $password, $birthdate) {
@@ -96,7 +104,6 @@ class UserHandler {
     }
 
     public static function follow($from, $to) {
-        echo 'entrei  aqui '.$from.' '.$to;
         UserRelations::insert([
             'id' => null,
             'user_from' => $from,
@@ -159,9 +166,10 @@ class UserHandler {
             'name', $updateFields['name'],
             'birthdate', $updateFields['birthdate'],
             'city', $updateFields['city'],
-            'work', $updateFields['work'],
-            )->where('id', $idUser)->execute();
+            'work', $updateFields['work']
+        )->where('id', $idUser)->execute();
         
     }
 
 }
+

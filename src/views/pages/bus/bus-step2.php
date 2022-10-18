@@ -57,10 +57,7 @@
       </div>
     </section>
   </div>
-    
-</body>
-</html>
-
+  <?=$render('footer')?>
 <script src="https://unpkg.com/imask"></script>
     <script>
         var mascara = {

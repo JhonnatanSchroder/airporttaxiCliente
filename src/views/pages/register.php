@@ -17,7 +17,7 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <title>bootstrap</title>
+    <title>Airporttaxi.ch</title>
   </head>
   <body>
     <?=$render('login-header')?>
@@ -75,7 +75,7 @@
               </div>
               <div class="mb-3">
                 <label for="birthdate" class="form-label">
-                  Digite sua data de nascimento
+                  Digite sua data de nascimento (yyyy/mm/dd)
                 </label>
                 <input
                   id="birthdate"

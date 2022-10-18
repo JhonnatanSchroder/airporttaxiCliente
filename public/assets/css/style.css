@@ -39,3 +39,10 @@ form {
 .icone {
   font-size: 6rem;
 }
+
+footer .footer {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}

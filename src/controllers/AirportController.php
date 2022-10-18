@@ -149,6 +149,11 @@ class AirportController extends Controller {
         ]);
     }
 
+    public function logout() {
+        $_SESSION['token'] ='';
+
+        $this->redirect('/login');
+    }
     public function thankPage() {
 
         $this->render('thankpage');

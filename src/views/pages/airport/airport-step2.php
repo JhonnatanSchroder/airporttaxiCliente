@@ -95,6 +95,7 @@
         </div>
       </div>
     </section>
+  <?=$render('footer')?>
   </div>
 </body>
 </html>

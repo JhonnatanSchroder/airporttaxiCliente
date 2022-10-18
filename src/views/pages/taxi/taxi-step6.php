@@ -34,7 +34,7 @@
                         <?php endif;?>
 
                         <div class="mb-3">
-                            <input type="hidden" name="service_type" value="taxi_order">
+                            <input type="hidden" name="service_type" value="taxi">
                             <label for="exampleInputEmail1" class="form-label"
                                 >Primeiro e ultimo nome</label
                             >
@@ -80,10 +80,7 @@
       </div>
     </section>
   </div>
-    
-</body>
-</html>
-
+  <?=$render('footer')?>
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {

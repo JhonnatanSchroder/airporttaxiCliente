@@ -26,8 +26,8 @@
         </div>
         <div class="row">
         <div class="container bg-white">
-            <div class="row justify-content-center">
-                <div>
+            <div class="row ">
+                <div class='col-lg-6'>
                     <form novalidate method="POST" action="<?=$base?>/taxi/<?=$conection?>/step5" class="p-4 needs-validation">
                         <?php if(!empty($flash)):?>
                             <div class="alert alert-danger" role="alert"><?php echo $flash;?></div>
@@ -69,10 +69,7 @@
       </div>
     </section>
   </div>
-    
-</body>
-</html>
-
+  <?=$render('footer')?>
 <script src="https://unpkg.com/imask"></script>
     <script>
         var mascara = {

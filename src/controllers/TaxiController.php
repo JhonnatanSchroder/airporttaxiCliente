@@ -186,8 +186,6 @@ class TaxiController extends Controller {
         $kids_seats = $_SESSION['kids_seats'];
         $booster_seats = $_SESSION['booster_seats'];
         $obs = $_SESSION['obs'];
-
-        echo "$name, $email, $phone, $passengers";
        
         if($name && $email && $phone && $passengers) {
             TaxiHandler::addOrder(

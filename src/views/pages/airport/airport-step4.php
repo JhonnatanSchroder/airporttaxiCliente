@@ -32,7 +32,7 @@
                             <div class="alert alert-danger" role="alert"><?php echo $flash;?></div>
                         <?php endif;?>
                         <div class="mb-3">
-                            <input type="hidden" name="service_type" value="airport_taxi">
+                            <input type="hidden" name="service_type" value="airportTaxi">
                             <label for="exampleInputEmail1" class="form-label"
                                 >Primeiro e ultimo nome</label
                             >
@@ -92,10 +92,7 @@
       </div>
     </section>
   </div>
-    
-</body>
-</html>
-
+  <?=$render('footer')?>
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
