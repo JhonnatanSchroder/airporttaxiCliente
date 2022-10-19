@@ -60,10 +60,6 @@ class AirportController extends Controller {
         $airport = $atts['airport'];
         $conection = $atts['conection'];
 
-        echo $date_start;
-        echo $time_start;
-
-
         if($cep_start && $date_start && $time_start && $passengers) {
 
             if($passengers == 0) {
