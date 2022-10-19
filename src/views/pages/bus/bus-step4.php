@@ -19,7 +19,7 @@
             >
             </h2>
             <p class="mb-5 ">
-              Por favor, verifique o seu pedido de limousine;
+              Por favor, verifique o seu pedido de ônibus;
             </p>
           </div>
         </div>
