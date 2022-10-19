@@ -97,15 +97,6 @@
         </div>
       </div>
     </section>
-    <script src="https://unpkg.com/imask"></script>
-    <script>
-      IMask(
-        document.getElementById('birthdate'),
-        {
-          mask:'0000/00/00'
-        }
-      )
-    </script>
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function () {
