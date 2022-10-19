@@ -62,7 +62,7 @@
 
                         <div class="mb-3">
                             <label for="" class="form-label">Telefone</label>
-                            <input type="text" id='telefone' class="form-control" name='telefone' required>
+                            <input type="number" id='telefone' class="form-control" name='telefone' required>
                             <div class="invalid-feedback">Esse campo é obrigatório</div>
                         </div>
 

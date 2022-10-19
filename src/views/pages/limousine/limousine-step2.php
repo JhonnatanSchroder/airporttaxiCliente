@@ -35,19 +35,19 @@
 
                         <div class="mb-3">
                             <label for="" class="form-label">Passageiros</label>
-                            <input type="text" id='passageiros' class="form-control" name='passengers' required>
+                            <input type="number" id='passageiros' class="form-control" name='passengers' required>
                             <div class="invalid-feedback">Esse campo é obrigatório</div>
                         </div>
 
                         <div class="mb-3">
                             <label for="" class="form-label">Cadeiras de Crianca</label>
-                            <input type="text" id='criancas' class="form-control" name='kids_seats'
+                            <input type="number" id='criancas' class="form-control" name='kids_seats'
                             >
                         </div>
 
                         <div class="mb-3">
                             <label for="" class="form-label">Assento Elevátorio</label>
-                            <input type="text" id='assento' class="form-control" name='booster_seats' >
+                            <input type="number" id='assento' class="form-control" name='booster_seats' >
                         </div>
 
                         <div class="mb-3">
@@ -77,17 +77,7 @@
         }
       IMask(document.getElementById('passageiros'), mascara)
       IMask(document.getElementById('criancas'),mascara)
-      IMask(document.getElementById('assento'),mascara)
-      IMask(document.getElementById('partida-airport-date'),
-      {
-        mask: '0000/00/00'
-      }
-      )
-      IMask(document.getElementById('partida-airport-time'),
-      {
-        mask: '00:00',
-      }
-      )
+      IMask(document.getElementById('assento'),mascara)  
     </script>
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields

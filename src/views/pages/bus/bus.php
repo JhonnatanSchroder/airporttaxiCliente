@@ -65,15 +65,14 @@
                             >Data de inicio </label>
                         <div class="input-group mb-3">
                             <input
-                                type="text"
+                                type="date"
                                 class="form-control"
                                 name='date_start'
                                 id="partida-airport-date"
-                                placeholder="yyyy/mm/dd"
                                 required
                             />
                             <span class="input-group-text">-</span>
-                            <input type="text" class="form-control"
+                            <input type="time" class="form-control"
                             name='time_start' id='partida-airport-time'
                             placeholder="00:00"
                             required>
@@ -114,22 +113,6 @@
     </section>
   </div>
   <?=$render('footer')?>
-<script src="https://unpkg.com/imask"></script>
-    <script>
-        var mascara = {
-            mask: '00'
-        }
-      IMask(document.getElementById('partida-airport-date'),
-      {
-        mask: '0000/00/00'
-      }
-      )
-      IMask(document.getElementById('partida-airport-time'),
-      {
-        mask: '00:00',
-      }
-      )
-    </script>
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {

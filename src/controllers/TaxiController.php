@@ -101,7 +101,7 @@ class TaxiController extends Controller {
         $conection =  $atts['conection'];
 
         if($date_start && $time_start) {
-            $date_start = explode('/', $date_start);
+            $date_start = explode('-', $date_start);
             if(count($date_start) != 3) {
                 $_SESSION['flash'] = 'Data de partida inválida';
                 $this->redirect("/taxi/$conection/step4");

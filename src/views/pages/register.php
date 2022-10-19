@@ -79,7 +79,7 @@
                 </label>
                 <input
                   id="birthdate"
-                  type="text"
+                  type="date"
                   class="form-control"
                   name='birthdate'
                   required

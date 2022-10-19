@@ -34,7 +34,7 @@ class LimousineController extends Controller {
     $street = filter_input(INPUT_POST, 'street');
 
     if($date_start && $time_start && $cep_start) {
-        $date_start = explode('/', $date_start);
+        $date_start = explode('-', $date_start);
         if(count($date_start) != 3) {
             $_SESSION['flash'] = 'Data de partida inválida';
             $this->redirect('/limousine');
