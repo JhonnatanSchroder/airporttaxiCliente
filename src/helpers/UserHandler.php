@@ -18,6 +18,8 @@ class UserHandler {
             $sql->execute();
             $data = $sql->fetchAll(\PDO::FETCH_ASSOC);
 
+            print_r($data);
+
             if($data !== "" || null) {
 
                 $loggedUser = new User();
