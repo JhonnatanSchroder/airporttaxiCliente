@@ -41,13 +41,13 @@
 
                         <div class="mb-3">
                             <label for="" class="form-label">Cadeiras de Crianca</label>
-                            <input type="number" id='criancas' class="form-control" name='kids_seats'
+                            <input type="number" id='criancas' class="form-control" name='kids_seats' value='0'
                             >
                         </div>
 
                         <div class="mb-3">
                             <label for="" class="form-label">Assento Elevátorio</label>
-                            <input type="number" id='assento' class="form-control" name='booster_seats' >
+                            <input type="number" id='assento' class="form-control" name='booster_seats' value='0'>
                         </div>
 
                         <div class="mb-3">
