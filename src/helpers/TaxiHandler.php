@@ -31,9 +31,11 @@ class TaxiHandler {
     ) { 
 
         $pdo = Database::getInstance();
+        echo 'bora bil';
         $sql = $pdo->prepare("INSERT INTO `taxi` (`id`, `street_start`, `cep_start`, `city_start`, `street_end`, `cep_end`, `city_end`, `date_start`, `passengers`, `kids_seats`, `booster_seats`, `obs`, `conection`, `name`, `email`, `phone`, `service_type`, `id_user`)
          VALUES (NULL, :street_start, :cep_start, :city_start, :street_end, :cep_end, :city_end, :date,
          :passengers, :kids_seats, :booster_seats, :obs, :conection, :name, :email, :phone, :service_type, :id_user);");
+
         $sql->bindValue(':street_start', $street_start);
         $sql->bindValue(':cep_start', $cep_start);
         $sql->bindValue(':city_start', $city_start);
