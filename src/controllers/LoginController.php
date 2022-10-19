@@ -56,7 +56,7 @@ class LoginController extends Controller {
 
         if($name && $email && $password && $birthdate) {
 
-            $birthdate = explode('/', $birthdate);
+            $birthdate = explode('-', $birthdate);
             if(count($birthdate) != 3) {
                 $_SESSION['flash'] = "Data de nascimento inválida";
                 $this->redirect('/register');
