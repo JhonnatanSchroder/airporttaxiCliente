@@ -78,17 +78,7 @@
       IMask(document.getElementById('passageiros'), mascara)
       IMask(document.getElementById('criancas'),mascara)
       IMask(document.getElementById('assento'),mascara)
-      IMask(document.getElementById('partida-airport-date'),
-      {
-        mask: '0000/00/00'
-      }
-      )
-      IMask(document.getElementById('partida-airport-time'),
-      {
-        mask: '00:00',
-      }
-      )
-    </script>
+
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {

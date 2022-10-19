@@ -65,20 +65,6 @@
     </section>
   </div>
   <?=$render('footer')?>
-<script src="https://unpkg.com/imask"></script>
-    <script>
-
-      IMask(document.getElementById('partida-airport-date'),
-      {
-        mask: '0000/00/00'
-      }
-      )
-      IMask(document.getElementById('partida-airport-time'),
-      {
-        mask: '00:00',
-      }
-      )
-    </script>
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
