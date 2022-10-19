@@ -17,6 +17,7 @@ class UserHandler {
             $sql->bindValue(':token', $token);
             $sql->execute();
             $data = $sql->fetchAll(\PDO::FETCH_ASSOC);
+
             if($data !== "" || null) {
 
                 $loggedUser = new User();
@@ -32,15 +33,26 @@ class UserHandler {
     }
 
     public static function verifyLogin($email, $password) {
-        $User = User::select()->where('email', $email)->one();
+        $pdo = Database::getInstance();
+
+        $sql = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+        $sql->bindValue(':email', $email);
+        $sql->execute();
+
+        $User = $sql->fetchAll(\PDO::FETCH_ASSOC);
 
         if($User) {
-            if(password_verify($password, $User['password'])) {
+            $hash = $User[0]['password'];
+            if(password_verify($password, $hash)) {
                 $token = md5(time().rand(0,9999));
 
-                User::update()->set('token', $token)->where('email', $email)->execute();
+                $sql = $pdo->prepare("UPDATE `users` SET `token` = :token WHERE email = :email");
+                $sql->bindValue(':email', $email);
+                $sql->bindValue(':token', $token);
+                $sql->execute();
+
                 return $token;
-            }
+            } 
         }
 
         return false;
@@ -79,65 +91,16 @@ class UserHandler {
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $token =  md5(time().rand(0,9999).time());
 
-        User::insert([
-            'name' => $name,
-            'email' => $email,
-            'password' => $hash,
-            'birthdate' => $birthdate,
-            'token' => $token
-        ])->execute();
+        $pdo = Database::getInstance();
+        $sql = $pdo->prepare("INSERT INTO users (name, email, password, birthdate, token) VALUES (:name, :email, :password, :birthdate, :token)");
+        $sql->bindValue(':name', $name);
+        $sql->bindValue(':email', $email);
+        $sql->bindValue(':password', $hash);
+        $sql->bindValue(':birthdate', $birthdate);
+        $sql->bindValue(':token', $token);
+        $sql->execute();
 
         return $token;
-    }
-
-    public static function isFollowing($from, $to) {
-        $data = UserRelations::select()
-            ->where('user_from', $from)
-            ->where('user_to', $to)
-        ->one();
-
-        if($data) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public static function follow($from, $to) {
-        UserRelations::insert([
-            'id' => null,
-            'user_from' => $from,
-            'user_to' => $to
-        ])->execute();
-        
-    }
-
-    public static function unfollow($from, $to) {
-        UserRelations::delete()
-            ->where('user_from', $from)
-            ->where('user_to', $to)
-        ->execute();
-    }
-
-    public static function searchUser($term) {
-        $users = [];
-        $data = User::select()->where('name', 'like', "%$term%")->get();
-
-        if($data) {
-            foreach($data as $user) {
-
-                $newUser = new User();
-                $newUser->id = $user['id'];
-                $newUser->name = $user['name'];
-                $newUser->avatar = $user['avatar'];
-
-                $users[] = $newUser;
-            }
-
-        }
-
-        return $users;
-
     }
 
     public static function updateUser($updateFields, $idUser) {
