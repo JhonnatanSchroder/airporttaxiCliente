@@ -3,20 +3,20 @@ namespace src\helpers;
 
 use \core\Database;
 use \src\Config;
-use \src\models\Airport;
+use \src\models\Airports;
 use \src\models\AirportOrders;
 
 
 class AirportHandler {
     
     public static function getAirports() {
-        $data = Airport::select()->execute();
+        $data = Airports::select()->execute();
 
-        $airports = new Airport();
+        $airports = new Airports();
         $airports->data = [];
 
         foreach($data as $airport) {
-            $newAirport = new Airport();
+            $newAirport = new Airports();
             $newAirport->name = strtolower($airport['name']);
             $newAirport->image = $airport['image'];
 
