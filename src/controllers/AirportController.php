@@ -8,15 +8,6 @@ use \src\helpers\UserHandler;
 
 
 class AirportController extends Controller {
-    // private $loggedUser;
-
-    // public function __construct() {
-    //     $this->loggedUser = UserHandler::checkLogin();
-    //     if( $this->loggedUser === false) {
-    //         $this->redirect('/login');
-    //     }    
-    // }
-
     public function airports() {
         $airports = AirportHandler::getAirports();
         
@@ -91,10 +82,7 @@ class AirportController extends Controller {
         $airport = $atts['airport'];
         $conection = $atts['conection'];
 
-        $user = UserHandler::getUser($this->loggedUser->id);
-
         $this->render('airport/airport-step4', [
-            'user' => $user,
             'airport' => $airport,
             'conection' => $conection,
         ]);
@@ -112,6 +100,7 @@ class AirportController extends Controller {
         
         $service_type = filter_input(INPUT_POST, 'service_type');
         $name = filter_input(INPUT_POST, 'name');
+        $_SESSION['name'] = $name;
         $email = filter_input(INPUT_POST, 'email');
         $telefone = filter_input(INPUT_POST, 'telefone');
         $street = filter_input(INPUT_POST, 'street');
@@ -131,17 +120,15 @@ class AirportController extends Controller {
                 $street,
                 $cep_end,
                 $conection,
-                $service_type,
                 $airport,
-                $this->loggedUser->id
             );
 
-            $this->redirect("/airporttaxi/$airport/$conection/step5");
+            // $this->redirect("/airporttaxi/$airport/$conection/step5");
         }
     }
 
     public function step5($atts){
-        $order = AirportHandler::getLastOrder($this->loggedUser->id);
+        $order = AirportHandler::getLastOrder($_SESSION['name']);
 
         $this->render('airport/airports-step5', [
             'order' => $order

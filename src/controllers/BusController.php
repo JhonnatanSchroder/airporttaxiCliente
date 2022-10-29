@@ -7,14 +7,6 @@ use \src\helpers\BusHandler;
 use \src\helpers\UserHandler;
 
 class BusController extends Controller {
-    private $loggedUser;
-
-    public function __construct() {
-        $this->loggedUser = UserHandler::checkLogin();
-        if( $this->loggedUser === false) {
-            $this->redirect('/login');
-        }    
-    }
 
    public function index() {
     $flash = '';
@@ -85,16 +77,13 @@ class BusController extends Controller {
    }
 
    public function step3() {
-    $user = UserHandler::getUser($this->loggedUser->id);
 
-
-    $this->render('bus/bus-step3', [
-        'user' => $user
-    ]);
+    $this->render('bus/bus-step3');
    }
 
    public function step3Action() {
     $name = filter_input(INPUT_POST, 'name');
+    $_SESSION['name'] = $name;
     $email = filter_input(INPUT_POST, 'email');
     $phone = filter_input(INPUT_POST, 'phone');
     $how = filter_input(INPUT_POST, 'how');
@@ -116,7 +105,6 @@ class BusController extends Controller {
             $name,
             $email,
             $phone,
-            $this->loggedUser->id
         );
         $this->redirect('/bus/step4');
     } else {
@@ -126,7 +114,7 @@ class BusController extends Controller {
    }
 
    public function step4() {
-    $order = BusHandler::getLastOrder($this->loggedUser->id);
+    $order = BusHandler::getLastOrder($_SESSION['name']);
 
     $this->render('bus/bus-step4', [
         'order' => $order

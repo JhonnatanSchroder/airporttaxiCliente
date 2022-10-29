@@ -21,48 +21,40 @@ class LimousineHandler {
         $how,
         $name,
         $email,
-        $phone,
-        $id_user
+        $phone
     ) { 
 
-        $pdo = Database::getInstance();
-        $sql = $pdo->prepare("INSERT INTO `limousine` (`id`,`date`, `street`, `cep_start`, `passengers`, `kids_seats`, `booster_seats`, `obs`, `how`,`name`, `email`, `phone`,`id_user`)
-         VALUES (NULL, :date, :street, :cep_start, :passengers, :kids_seats, :booster_seats, :obs, :how, :name, :email, :phone, :id_user);");
-        $sql->bindValue(':date', $date);
-        $sql->bindValue(':street', $street);
-        $sql->bindValue(':cep_start', $cep_start);
-        $sql->bindValue(':passengers', $passengers);
-        $sql->bindValue(':kids_seats', $kids_seats);
-        $sql->bindValue(':booster_seats', $booster_seats);
-        $sql->bindValue(':obs', $obs);
-        $sql->bindValue(':how', $how);
-        $sql->bindValue(':name', $name);
-        $sql->bindValue(':email', $email);
-        $sql->bindValue(':phone', $phone);
-        $sql->bindValue(':id_user', $id_user);
-        $sql->execute();
+         Limousine::insert([
+            'date' => $date,
+            'street' => $street,
+            'cep_start' => $cep_start,
+            'passengers' => $passengers,
+            'kids_seats' => $kids_seats,
+            'booster_seats' => $booster_seats,
+            'obs' => $obs,
+            'how' => $how,
+            'name' => $name,
+            'email' => $email,
+            'phone' => $phone
+        ]);
     }
 
-    public function getLastOrder($id_user) {
-        $pdo = Database::getInstance();
-        $sql = $pdo->prepare("SELECT * FROM `limousine` WHERE id_user = :id_user ORDER BY id DESC LIMIT 1");
-        $sql->bindValue(':id_user', $id_user);
-        $sql->execute();
-        $data = $sql->fetchAll(\PDO::FETCH_ASSOC);
+    public function getLastOrder($name) {
+        $data = Limousine::select()->where('name', $name)->one();
 
-        if(count($data) != 0) {
+        if(isset($data)) {
             $LimousineOrder = new Limousine();
-            $LimousineOrder->date = $data[0]['date'];
-            $LimousineOrder->street = $data[0]['street'];
-            $LimousineOrder->cep_start = $data[0]['cep_start'];
-            $LimousineOrder->passengers = $data[0]['passengers'];
-            $LimousineOrder->kids_seats = $data[0]['kids_seats'];
-            $LimousineOrder->booster_seats = $data[0]['booster_seats'];
-            $LimousineOrder->obs = $data[0]['obs'];
-            $LimousineOrder->how = $data[0]['how'];
-            $LimousineOrder->name = $data[0]['name'];
-            $LimousineOrder->email = $data[0]['email'];
-            $LimousineOrder->phone = $data[0]['phone'];
+            $LimousineOrder->date = $data['date'];
+            $LimousineOrder->street = $data['street'];
+            $LimousineOrder->cep_start = $data['cep_start'];
+            $LimousineOrder->passengers = $data['passengers'];
+            $LimousineOrder->kids_seats = $data['kids_seats'];
+            $LimousineOrder->booster_seats = $data['booster_seats'];
+            $LimousineOrder->obs = $data['obs'];
+            $LimousineOrder->how = $data['how'];
+            $LimousineOrder->name = $data['name'];
+            $LimousineOrder->email = $data['email'];
+            $LimousineOrder->phone = $data['phone'];
 
             return $LimousineOrder;
         }

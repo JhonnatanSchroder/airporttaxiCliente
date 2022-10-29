@@ -24,12 +24,6 @@ $router->post('/airporttaxi/{airport}/{conection}/step4', 'AirportController@ste
 
 $router->get('/airporttaxi/{airport}/{conection}/step5', 'AirportController@step5');
 
-$router->get('/login', 'LoginController@login');
-$router->post('/login', 'LoginController@loginPost');
-
-$router->get('/register', 'LoginController@register');
-$router->post('/register', 'LoginController@registerPost');
-
 // TÁXI ROUTES
 
 $router->get('/taxi', 'TaxiController@index');
@@ -78,4 +72,3 @@ $router->post('/bus/step3', "BusController@step3Action");
 
 $router->get('/bus/step4', "BusController@step4");
 
-$router->get('/logout', "AirportController@logout");

@@ -8,15 +8,6 @@ use \src\helpers\UserHandler;
 
 
 class TaxiController extends Controller {
-    private $loggedUser;
-
-    public function __construct() {
-        $this->loggedUser = UserHandler::checkLogin();
-        if( $this->loggedUser === false) {
-            $this->redirect('/login');
-        }    
-    }
-
     public function index() {
 
 
@@ -159,19 +150,16 @@ class TaxiController extends Controller {
     public function step6($atts) {
         $conection =  $atts['conection'];
 
-        $user = UserHandler::getUser($this->loggedUser->id);
-
         $this->render('taxi/taxi-step6', [
             'conection' => $conection,
-            'user' => $user
         ]);
     }
 
     public function step6Action($atts) {
         $name = filter_input(INPUT_POST, 'name');
+        $_SESSION['name'] = $name;
         $email = filter_input(INPUT_POST, 'email');
         $phone = filter_input(INPUT_POST, 'phone');
-        $service_type = filter_input(INPUT_POST, 'service_type');
 
         $conection =  $atts['conection'];
 
@@ -204,20 +192,18 @@ class TaxiController extends Controller {
                 $name,
                 $email,
                 $phone,
-                $service_type,
-                $this->loggedUser->id                
             );
 
-            $this->redirect("/taxi/$conection/step7");
+            // $this->redirect("/taxi/$conection/step7");
         } else {
-            $this->redirect("/taxi/$conection/step6");
+            // $this->redirect("/taxi/$conection/step6");
 
         }
 
     }
 
     public function step7($atts) {
-        $order = TaxiHandler::getLastOrder($this->loggedUser->id);
+        $order = TaxiHandler::getLastOrder($_SESSION['name']);
 
 
         $this->render('taxi/taxi-step7', [

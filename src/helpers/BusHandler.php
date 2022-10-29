@@ -19,43 +19,36 @@ class BusHandler {
         $how,
         $name,
         $email,
-        $phone,
-        $id_user
+        $phone
     ) { 
 
-        $pdo = Database::getInstance();
-        $sql = $pdo->prepare("INSERT INTO `bus` (`id`,`date`, `street`, `cep_start`, `passengers`, `obs`, `how`, `name`, `email`, `phone`,`id_user`)
-         VALUES (NULL, :date, :street, :cep_start,:passengers, :obs, :how, :name, :email, :phone, :id_user);");
-        $sql->bindValue(':date', $date);
-        $sql->bindValue(':street', $street);
-        $sql->bindValue(':cep_start', $cep_start);
-        $sql->bindValue(':passengers', $passengers);
-        $sql->bindValue(':obs', $obs);
-        $sql->bindValue(':how', $how);
-        $sql->bindValue(':name', $name);
-        $sql->bindValue(':email', $email);
-        $sql->bindValue(':phone', $phone);
-        $sql->bindValue(':id_user', $id_user);
-        $sql->execute();
-
+        Bus::insert([
+            'date' => $date,
+            'street' => $street,
+            'cep_start' => $cep_start,
+            'passengers' => $passengers,
+            'obs' => $obs,
+            'how' => $how,
+            'name' => $name,
+            'email' => $email,
+            'phone' => $phone
+        ]);
     }
 
-    public function getLastOrder($id_user) {
-        $pdo = Database::getInstance();
-        $sql = $pdo->query("SELECT * FROM `bus` WHERE id_user = $id_user ORDER BY id DESC");
-
-        if($sql->rowCount() != 0) {
-            $data = $sql->fetchAll(\PDO::FETCH_ASSOC);
+    public function getLastOrder($name) {
+        $data = Bus::select()->where('name', $name)->one();
+        
+        if(isset($data)) {
             $BusOrder = new Bus();
-            $BusOrder->date = $data[0]['date'];
-            $BusOrder->street = $data[0]['street'];
-            $BusOrder->cep_start = $data[0]['cep_start'];
-            $BusOrder->passengers = $data[0]['passengers'];
-            $BusOrder->obs = $data[0]['obs'];
-            $BusOrder->how = $data[0]['how'];
-            $BusOrder->name = $data[0]['name'];
-            $BusOrder->email = $data[0]['email'];
-            $BusOrder->phone = $data[0]['phone'];
+            $BusOrder->date = $data['date'];
+            $BusOrder->street = $data['street'];
+            $BusOrder->cep_start = $data['cep_start'];
+            $BusOrder->passengers = $data['passengers'];
+            $BusOrder->obs = $data['obs'];
+            $BusOrder->how = $data['how'];
+            $BusOrder->name = $data['name'];
+            $BusOrder->email = $data['email'];
+            $BusOrder->phone = $data['phone'];
 
             return $BusOrder;
         }

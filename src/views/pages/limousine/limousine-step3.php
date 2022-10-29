@@ -41,7 +41,6 @@
                                 type="text"
                                 class="form-control has-validation"
                                 name="name"
-                                value='<?=$user->name?>'
                                 required
                             />
                             <div class="invalid-feedback">
@@ -55,7 +54,6 @@
                                 type="text"
                                 class="form-control"
                                 name='email'
-                                value='<?=$user->email?>'
                                 required
                             />
                             <div class="invalid-feedback">Esse campo é obrigatório</div>

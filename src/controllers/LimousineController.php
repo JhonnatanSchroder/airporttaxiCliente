@@ -6,14 +6,6 @@ use \src\helpers\LimousineHandler;
 use \src\helpers\UserHandler;
 
 class LimousineController extends Controller {
-    private $loggedUser;
-
-    public function __construct() {
-        $this->loggedUser = UserHandler::checkLogin();
-        if( $this->loggedUser === false) {
-            $this->redirect('/login');
-        }    
-    }
 
    public function index() {
     $flash = '';
@@ -88,16 +80,14 @@ class LimousineController extends Controller {
    }
 
    public function step3() {
-    $user = UserHandler::getUser($this->loggedUser->id);
 
 
-    $this->render('limousine/limousine-step3', [
-        'user' => $user
-    ]);
+    $this->render('limousine/limousine-step3');
    }
 
    public function step3Action() {
     $name = filter_input(INPUT_POST, 'name');
+    $_SESSION['name'] = $name;
     $email = filter_input(INPUT_POST, 'email');
     $phone = filter_input(INPUT_POST, 'phone');
     $how = filter_input(INPUT_POST, 'how');
@@ -123,7 +113,6 @@ class LimousineController extends Controller {
             $name,
             $email,
             $phone,
-            $this->loggedUser->id
         );
         $this->redirect('/limousine/step4');
     } else {
@@ -133,7 +122,7 @@ class LimousineController extends Controller {
    }
 
    public function step4() {
-    $order = LimousineHandler::getLastOrder($this->loggedUser->id);
+    $order = LimousineHandler::getLastOrder($_SESSION['name']);
 
     $this->render('limousine/limousine-step4', [
         'order' => $order

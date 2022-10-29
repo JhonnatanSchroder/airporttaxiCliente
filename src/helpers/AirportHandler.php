@@ -4,7 +4,7 @@ namespace src\helpers;
 use \core\Database;
 use \src\Config;
 use \src\models\Airport;
-use \src\models\TaxiOrder;
+use \src\models\AirportOrders;
 
 
 class AirportHandler {
@@ -37,56 +37,48 @@ class AirportHandler {
     }
 
     public static function addAirport(
-        $cep_start, $date, $passengers, $kids_seats = null, $booster_seats = null,
-        $obs = null, $name, $email, $number, $street_name, $cep_end, $conection, $service_type, $airport, $id_user
+        $cep_start, $date, $passengers, $kids_seats, $booster_seats,
+        $obs, $name, $email, $number, $street_name, $cep_end, $conection,$airport
     ) { 
-
-        $pdo = Database::getInstance();
-        $sql = $pdo->prepare("INSERT INTO `taxiorder` (`id`, `cep_start`, `date_start`, `passengers`, `kids_seats`, `booster_seats`, `obs`, `name_user`, `email`, `telefone`, `street_name`, `cep_end`, `conection`, `service_type`, `airport`, `id_user`)
-         VALUES (NULL, :cep_start, :date, :passengers, :kids_seats, :booster_seats, :obs, :name, :email, :number, :street_name, :cep_end, :conection, :service_type, :airport, :id_user);");
-        $sql->bindValue(':cep_start', $cep_start);
-        $sql->bindValue(':date', $date);
-        $sql->bindValue(':passengers', $passengers);
-        $sql->bindValue(':kids_seats', $kids_seats);
-        $sql->bindValue(':booster_seats', $booster_seats);
-        $sql->bindValue(':obs', $obs);
-        $sql->bindValue(':name', $name);
-        $sql->bindValue(':email', $email);
-        $sql->bindValue(':number', $number);
-        $sql->bindValue(':street_name', $street_name);
-        $sql->bindValue(':cep_end', $cep_end);
-        $sql->bindValue(':conection', $conection);
-        $sql->bindValue(':service_type', $service_type);
-        $sql->bindValue(':airport', $airport);
-        $sql->bindValue(':id_user', $id_user);
-        $sql->execute();
-        
-
+        AirportOrders::insert([
+            'cep_start' => $cep_start,
+            'date_start' => $date,
+            'passengers' => $passengers,
+            'kids_seats' => $kids_seats,
+            'booster_seats' => $booster_seats,
+            'obs' => $obs,
+            'name' => $name,
+            'email' => $email,
+            'phone' => $number,
+            'street_name' => $street_name,
+            'cep_end' => $cep_end,
+            'conection' => $conection,
+            'airport' => $airport,
+        ])->execute();
+       
     }
 
-    public function getLastOrder($id_user) {
-        $pdo = Database::getInstance();
-        $sql = $pdo->query("SELECT * FROM `taxiorder` WHERE id_user = $id_user ORDER BY id DESC");
+    public function getLastOrder($name) {
+        $data = AirportOrders::select()->where('name', $name)->one();
 
-        if($sql->rowCount() != 0) {
-            $data = $sql->fetchAll(\PDO::FETCH_ASSOC);
-            $taxiOrder = new TaxiOrder();
-            $taxiOrder->cep_start = $data[0]['cep_start'];
-            $taxiOrder->date = $data[0]['date_start'];
-            $taxiOrder->passengers = $data[0]['passengers'];
-            $taxiOrder->kids_seats = $data[0]['kids_seats'];
-            $taxiOrder->booster_seats = $data[0]['booster_seats'];
-            $taxiOrder->obs = $data[0]['obs'];
-            $taxiOrder->name_user = $data[0]['name_user'];
-            $taxiOrder->email = $data[0]['email'];
-            $taxiOrder->telefone = $data[0]['telefone'];
-            $taxiOrder->street_name = $data[0]['street_name'];
-            $taxiOrder->cep_end = $data[0]['cep_end'];
-            $taxiOrder->conection = $data[0]['conection'];
-            $taxiOrder->service_type = $data[0]['service_type'];
-            $taxiOrder->airport = $data[0]['airport'];
+        if(isset($data)) {
+            $airportOrder = new AirportOrders();
+            $airportOrder->cep_start = $data['cep_start'];
+            $airportOrder->date = $data['date_start'];
+            $airportOrder->passengers = $data['passengers'];
+            $airportOrder->kids_seats = $data['kids_seats'];
+            $airportOrder->booster_seats = $data['booster_seats'];
+            $airportOrder->obs = $data['obs'];
+            $airportOrder->name_user = $data['name'];
+            $airportOrder->email = $data['email'];
+            $airportOrder->telefone = $data['phone'];
+            $airportOrder->street_name = $data['street_name'];
+            $airportOrder->cep_end = $data['cep_end'];
+            $airportOrder->conection = $data['conection'];
+            $airportOrder->service_type = $data['service_type'];
+            $airportOrder->airport = $data['airport'];
 
-            return $taxiOrder;
+            return $airportOrder;
         }
 
     }

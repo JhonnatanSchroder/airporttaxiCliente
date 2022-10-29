@@ -2,6 +2,6 @@
 namespace src\models;
 use \core\Model;
 
-class Airport extends Model {
+class Airports extends Model {
 
 }

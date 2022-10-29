@@ -33,7 +33,6 @@
                             <div class="alert alert-danger" role="alert"><?php echo $flash;?></div>
                         <?php endif;?>
                         <div class="mb-3">
-                            <input type="hidden" name="service_type" value="airportTaxi">
                             <label for="exampleInputEmail1" class="form-label"
                                 >Primeiro e ultimo nome</label
                             >
@@ -41,7 +40,6 @@
                                 type="text"
                                 class="form-control has-validation"
                                 name="name"
-                                value='<?=$user->name?>'
                                 required
                             />
                             <div class="invalid-feedback">
@@ -55,7 +53,6 @@
                                 type="text"
                                 class="form-control"
                                 name='email'
-                                value='<?=$user->email?>'
                                 required
                             />
                             <div class="invalid-feedback">Esse campo é obrigatório</div>
