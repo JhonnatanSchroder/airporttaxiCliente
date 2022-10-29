@@ -10,45 +10,61 @@
             <h2 class="fs-2 text-center mb-4">CONTATO</h1>
           </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-6 col-md-4 col-lg-4">
-                <a href='<?=$base?>/' class="mb-5 me-5">
-                    www.airporttaxi.ch
-                </a>
-            </div>
-            <div class="col-6 col-md-4 col-lg-4">
-                <p class="mb-5 d-inline-block">
-                    Tel:0041 44/888'777'8
-                </p>
+        <div class="row">
+          <div class="mb-3 col-md-6 offset-md-3">
+            <h5>Contato Airporttaxi:</h5>
+
+            <a href='<?=$base?>/' class="form-control">
+              www.airporttaxi.ch
+            </a>
+          </div>
+        </div>
+
+        <div class="row">
+           <div class="mb-3 col-md-6 offset-md-3">
+              <p class="form-control">
+                  Tel:0041 44/888'777'8
+              </p>
+              <hr>
             </div>
         </div>
-        <div class="row justify-content-center">
-          <div class="col-6 col-md-4 col-lg-4">
-            <a href='mailto:info@chlootetaxi.ch ' class="mb-5 me-5">
+        
+
+        <div class="row">
+          <div class="mb-3 col-md-6 offset-md-3">
+            <h5 class="mt-2">Contato Chlootetaxi:</h5>
+
+            <a href='mailto:info@chlootetaxi.ch ' class="form-control">
                 info@chlootetaxi.ch 
             </a>
-            </div>
-            <div class="col-6 col-md-4 col-lg-4">
-              <p class="mb-5 d-inline-block">
-                  Tel.: 044 / 888'777'9
-              </p>
-
           </div>
         </div>
-        <div class="row justify-content-center">
-          <div class="col-6 col-md-4 col-lg-4">
-            <a href='mailto:info@basinueritaxi.ch' class="mb-5 me-5">
+
+        <div class="row">
+          <div class="mb-3 col-md-6 offset-md-3">
+           <p class="form-control">
+              Tel.: 044 / 888'777'9
+           </p>
+            <hr>
+          </div>
+        </div>
+        
+
+        <div class="row">
+          <div class="mb-3 col-md-6 offset-md-3">
+        <h5 class="mt-2">Contato BasinueriTaxi:</h5>
+            <a href='mailto:info@basinueritaxi.ch' class="form-control">
                 info@basinueritaxi.ch 
             </a>
-            
           </div>
-          <div class="col-6 col-md-4 col-lg-4">
-            <p class="mb-5 d-inline-block">
+        </div>
+        <div class="row">
+          <div class="mb-3 col-md-6 offset-md-3">
+            <p class="form-control ">
                 Tel.: 044 / 888'777'3
             </p>
           </div>
         </div>
-       
       </div>
     </section>
   </div>

@@ -104,7 +104,7 @@ class BusController extends Controller {
             $how,
             $name,
             $email,
-            $phone,
+            $phone
         );
         $this->redirect('/bus/step4');
     } else {

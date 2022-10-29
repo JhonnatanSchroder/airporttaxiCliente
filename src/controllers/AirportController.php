@@ -120,10 +120,10 @@ class AirportController extends Controller {
                 $street,
                 $cep_end,
                 $conection,
-                $airport,
+                $airport
             );
 
-            // $this->redirect("/airporttaxi/$airport/$conection/step5");
+            $this->redirect("/airporttaxi/$airport/$conection/step5");
         }
     }
 

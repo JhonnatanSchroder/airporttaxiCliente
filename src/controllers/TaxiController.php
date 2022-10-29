@@ -191,12 +191,12 @@ class TaxiController extends Controller {
                 $conection,
                 $name,
                 $email,
-                $phone,
+                $phone
             );
 
-            // $this->redirect("/taxi/$conection/step7");
+            $this->redirect("/taxi/$conection/step7");
         } else {
-            // $this->redirect("/taxi/$conection/step6");
+            $this->redirect("/taxi/$conection/step6");
 
         }
 

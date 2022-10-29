@@ -112,7 +112,7 @@ class LimousineController extends Controller {
             $how,
             $name,
             $email,
-            $phone,
+            $phone
         );
         $this->redirect('/limousine/step4');
     } else {
