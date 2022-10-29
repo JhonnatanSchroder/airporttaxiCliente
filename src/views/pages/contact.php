@@ -14,7 +14,7 @@
           <div class="mb-3 col-md-6 offset-md-3">
             <h5>Contato Airporttaxi:</h5>
 
-            <a href='<?=$base?>/' class="form-control">
+            <a href='<?=$base?>/' class="form-control text-primary">
               www.airporttaxi.ch
             </a>
           </div>
@@ -34,7 +34,7 @@
           <div class="mb-3 col-md-6 offset-md-3">
             <h5 class="mt-2">Contato Chlootetaxi:</h5>
 
-            <a href='mailto:info@chlootetaxi.ch ' class="form-control">
+            <a href='mailto:info@chlootetaxi.ch ' class="form-control text-primary">
                 info@chlootetaxi.ch 
             </a>
           </div>
@@ -53,7 +53,7 @@
         <div class="row">
           <div class="mb-3 col-md-6 offset-md-3">
         <h5 class="mt-2">Contato BasinueriTaxi:</h5>
-            <a href='mailto:info@basinueritaxi.ch' class="form-control">
+            <a href='mailto:info@basinueritaxi.ch' class="form-control text-primary">
                 info@basinueritaxi.ch 
             </a>
           </div>
