@@ -8,14 +8,14 @@ use \src\helpers\UserHandler;
 
 
 class AirportController extends Controller {
-    private $loggedUser;
+    // private $loggedUser;
 
-    public function __construct() {
-        $this->loggedUser = UserHandler::checkLogin();
-        if( $this->loggedUser === false) {
-            $this->redirect('/login');
-        }    
-    }
+    // public function __construct() {
+    //     $this->loggedUser = UserHandler::checkLogin();
+    //     if( $this->loggedUser === false) {
+    //         $this->redirect('/login');
+    //     }    
+    // }
 
     public function airports() {
         $airports = AirportHandler::getAirports();
