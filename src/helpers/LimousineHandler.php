@@ -39,8 +39,8 @@ class LimousineHandler {
         ]);
     }
 
-    public function getLastOrder($name) {
-        $data = Limousine::select()->where('name', $name)->one();
+    public function getLastOrder($email) {
+        $data = Limousine::select()->where('email', $email)orderBy('id', 'desc')->one();
 
         if(isset($data)) {
             $LimousineOrder = new Limousine();

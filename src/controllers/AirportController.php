@@ -100,8 +100,8 @@ class AirportController extends Controller {
         
         $service_type = filter_input(INPUT_POST, 'service_type');
         $name = filter_input(INPUT_POST, 'name');
-        $_SESSION['name'] = $name;
         $email = filter_input(INPUT_POST, 'email');
+        $_SESSION['email'] = $email;
         $telefone = filter_input(INPUT_POST, 'telefone');
         $street = filter_input(INPUT_POST, 'street');
         $cep_end = filter_input(INPUT_POST, 'cep_end');
@@ -128,7 +128,7 @@ class AirportController extends Controller {
     }
 
     public function step5($atts){
-        $order = AirportHandler::getLastOrder($_SESSION['name']);
+        $order = AirportHandler::getLastOrder($_SESSION['email']);
 
         $this->render('airport/airports-step5', [
             'order' => $order

@@ -58,8 +58,8 @@ class AirportHandler {
        
     }
 
-    public function getLastOrder($name) {
-        $data = AirportOrders::select()->where('name', $name)->one();
+    public function getLastOrder($email) {
+        $data = AirportOrders::select()->where('email', $email)orderBy('id', 'desc')->one();
 
         if(isset($data)) {
             $airportOrder = new AirportOrders();

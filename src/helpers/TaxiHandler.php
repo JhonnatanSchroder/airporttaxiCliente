@@ -48,8 +48,8 @@ class TaxiHandler {
 
     }
 
-    public function getLastOrder($name) {
-        $data = TaxiOrders::select()->where('name', $name)->one();
+    public function getLastOrder($email) {
+        $data = TaxiOrders::select()->where('email', $email)orderBy('id', 'desc')->one();
 
         if(isset($data)) {
             $taxiOrder = new TaxiOrders();

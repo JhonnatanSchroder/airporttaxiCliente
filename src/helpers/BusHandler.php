@@ -35,8 +35,8 @@ class BusHandler {
         ]);
     }
 
-    public function getLastOrder($name) {
-        $data = Bus::select()->where('name', $name)->one();
+    public function getLastOrder($email) {
+        $data = Bus::select()->where('email', $email)orderBy('id', 'desc')->one();
         
         if(isset($data)) {
             $BusOrder = new Bus();

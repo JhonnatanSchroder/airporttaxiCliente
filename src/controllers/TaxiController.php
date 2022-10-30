@@ -157,8 +157,8 @@ class TaxiController extends Controller {
 
     public function step6Action($atts) {
         $name = filter_input(INPUT_POST, 'name');
-        $_SESSION['name'] = $name;
         $email = filter_input(INPUT_POST, 'email');
+        $_SESSION['email'] = $email;
         $phone = filter_input(INPUT_POST, 'phone');
 
         $conection =  $atts['conection'];
@@ -203,7 +203,7 @@ class TaxiController extends Controller {
     }
 
     public function step7($atts) {
-        $order = TaxiHandler::getLastOrder($_SESSION['name']);
+        $order = TaxiHandler::getLastOrder($_SESSION['email']);
 
 
         $this->render('taxi/taxi-step7', [

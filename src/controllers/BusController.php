@@ -83,8 +83,8 @@ class BusController extends Controller {
 
    public function step3Action() {
     $name = filter_input(INPUT_POST, 'name');
-    $_SESSION['name'] = $name;
     $email = filter_input(INPUT_POST, 'email');
+    $_SESSION['email'] = $email;
     $phone = filter_input(INPUT_POST, 'phone');
     $how = filter_input(INPUT_POST, 'how');
 
@@ -114,7 +114,7 @@ class BusController extends Controller {
    }
 
    public function step4() {
-    $order = BusHandler::getLastOrder($_SESSION['name']);
+    $order = BusHandler::getLastOrder($_SESSION['email']);
 
     $this->render('bus/bus-step4', [
         'order' => $order
